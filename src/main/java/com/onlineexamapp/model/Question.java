@@ -2,6 +2,7 @@ package com.onlineexamapp.model;
 
 public class Question {
 	private long id;
+	private int questionNumber;
 	private String questionText;
 	private String option1;
 	private String option2;
@@ -70,6 +71,12 @@ public class Question {
 	}
 	public void setSujectId(long sujectId) {
 		this.sujectId = sujectId;
+	}
+	public int getQuestionNumber() {
+		return questionNumber;
+	}
+	public void setQuestionNumber(int questionNumber) {
+		this.questionNumber = questionNumber;
 	}
 	
 	

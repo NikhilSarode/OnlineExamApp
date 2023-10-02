@@ -22,16 +22,18 @@ public class CommonDao {
 
 	}
 	
-	public List<Question> getQuestions(long subjectId) throws SQLException{
-		Connection con=getConnection();
-		List<Question> questions =null;
+	public Question getQuestion(long subjectId,String questionNumber) {
+		Question question=null;
+		Connection con=null;
 		try {
-			PreparedStatement stmt= con.prepareStatement("select * from questions where suject_id=?");
+			con=getConnection();
+			PreparedStatement stmt= con.prepareStatement("select * from questions where suject_id=? and question_number=?");
 			stmt.setLong(0, subjectId);
-			ResultSet rs=stmt.executeQuery();  
-			questions= new ArrayList<>();
+			stmt.setString(1, questionNumber);
+			
+			ResultSet rs=stmt.executeQuery(); 
+			question=new Question();
 			while(rs.next()) {
-				Question question=new Question();
 				question.setId(rs.getLong("id"));
 				question.setCorrectAnswer(rs.getString("correct_answer"));
 				question.setDescription(rs.getString("description"));
@@ -42,12 +44,18 @@ public class CommonDao {
 				question.setQuestionText(rs.getString("QUESTION_TEXT"));
 				question.setTotalMarks(rs.getInt("TOTAL_MARKS"));
 				question.setSujectId(subjectId);
-				questions.add(question);
 			}
-		} finally {
-			con.close();
 		}
-		return questions;
+		catch (SQLException e) {
+		}
+		finally {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				
+			}
+		}
+		return question;
 	}
 
 	private Connection getConnection() throws SQLException {

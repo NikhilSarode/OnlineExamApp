@@ -29,5 +29,11 @@
 		<%=question.getOption4() %>
 	</div>
 </div>
+<div>
+	<form action="/questions"><button>Next</button><input name="nextQuestionNumber" value=<%=question.getQuestionNumber()+1 %> /></form>
+	<form action="/questions"><button>Previous</button><input name="previousQuestionNumber" value=<%=question.getQuestionNumber()-1 %> /></form>
+</div>
+
+
 </body>
 </html>
