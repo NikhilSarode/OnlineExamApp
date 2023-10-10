@@ -19,10 +19,9 @@ public class QuestionsServlet extends HttpServlet {
 		String questionNumber=request.getParameter("nextQuestionNumber");
 		if(questionNumber==null)questionNumber=request.getParameter("previousQuestionNumber");
 		if(questionNumber==null)questionNumber="0";
-		Subject subject=(Subject)request.getAttribute("subject");
 		
 		CommonDao commonDao = new CommonDao();
-		Question question=commonDao.getQuestion(subject.getId(), questionNumber);
+		Question question=commonDao.getQuestion(1, questionNumber);
 		request.setAttribute("question", question);
 		dispatcher.forward(request, response);
 	}

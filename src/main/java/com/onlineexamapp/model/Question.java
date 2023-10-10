@@ -8,7 +8,7 @@ public class Question {
 	private String option2;
 	private String option3;
 	private String option4;
-	private String correctAnswer;
+	private int correctAnswer;
 	private int totalMarks;
 	private String description;
 	private long sujectId;
@@ -48,10 +48,10 @@ public class Question {
 	public void setOption4(String option4) {
 		this.option4 = option4;
 	}
-	public String getCorrectAnswer() {
+	public int getCorrectAnswer() {
 		return correctAnswer;
 	}
-	public void setCorrectAnswer(String correctAnswer) {
+	public void setCorrectAnswer(int correctAnswer) {
 		this.correctAnswer = correctAnswer;
 	}
 	public int getTotalMarks() {
